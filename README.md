@@ -1,13 +1,19 @@
-# MobileStereoNet: Towards Lightweight Deep Networks for Stereo Matching
+# MobileStereoNet
+![Python 3.6](https://img.shields.io/badge/python-3.6-green.svg)    
 
-This repository contains the code for 
+This repository contains the code for "MobileStereoNet: Towards Lightweight Deep Networks for Stereo Matching" [[arXiv](https://arxiv.org/pdf/2108.09770.pdf)]
+[[project](https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/kognitive-systeme/projects/deepstereovision/)].
 
-|![image1](images/000005_10_pred_2D.png)  2D-MobileStereoNet prediction |  ![image2](images/000005_10_error_2D.png) Error map|
-|:-------------------------:|:-------------------------:|
-
-
-|![image3](images/000005_10_pred_3D.png)  3D-MobileStereoNet prediction|  ![image4](images/000005_10_error_3D.png) Error map|
-|:-------------------------:|:-------------------------:|
+<div align="center">
+    <img align="center" src="images/000005_10.png" alt="drawing" width="621"/>
+    <p> <b>Input image</b> </p>
+    <img src="images/000005_10_pred_2D.png" alt="drawing" width="621"/>
+    <img src="images/000005_10_error_2D.png" alt="drawing" width="621"/>
+    <p> <b>2D-MobileStereoNet prediction</b> </p>
+    <img src="images/000005_10_pred_3D.png" alt="drawing" width="621"/>
+    <img src="images/000005_10_error_3D.png" alt="drawing" width="621"/>
+    <p> <b>3D-MobileStereoNet prediction</b> </p>
+</div>
 
 ## Installation
 
@@ -60,3 +66,18 @@ python prediction.py --datapath $DATAPATH --testlist ./filenames/kitti15_test.tx
 The implementation of this code is based on [PSMNet](https://github.com/JiaRenChang/PSMNet) and [GwcNet](https://github.com/xy-guo/GwcNet). Also, thanks to Matteo Poggi for the [KITTI python utils](https://github.com/mattpoggi/kitti-utilities-python).
 
 ## License
+
+This project is released under the [Apache 2.0 license](LICENSE).
+
+## Citation
+
+If you use this code, please cite this project.
+
+```
+@article{shamsafar2021mobilestereonet,
+  title={MobileStereoNet: Towards Lightweight Deep Networks for Stereo Matching},
+  author={Shamsafar, Faranak and Woerz, Samuel and Rahim, Rafia and Zell, Andreas},
+  journal={arXiv preprint arXiv:2108.09770},
+  year={2021}
+}
+```

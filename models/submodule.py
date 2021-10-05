@@ -1,3 +1,4 @@
+# Copyright (c) 2021. All rights reserved.
 from __future__ import print_function
 import torch
 import torch.nn as nn
