@@ -15,6 +15,12 @@ This repository contains the code for "MobileStereoNet: Towards Lightweight Deep
     <p> <b>3D-MobileStereoNet prediction</b> </p>
 </div>
 
+## Evaluation Results
+|                    	| SceneFlow: EPE (px) 	| KITTI2015 val: EPE (px) 	|
+|--------------------	|:-------------------:	|:-----------------------:	|
+| 2D-MobileStereoNet 	|         1.14        	|           0.79          	|
+| 3D-MobileStereoNet 	|         0.80        	|           0.66          	|
+
 ## Installation
 
 ### Requirements
