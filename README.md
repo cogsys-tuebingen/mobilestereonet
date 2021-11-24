@@ -15,11 +15,45 @@ This repository contains the code for "MobileStereoNet: Towards Lightweight Deep
     <p> <b>3D-MobileStereoNet prediction</b> </p>
 </div>
 
-## Evaluation Results
-|                    	| SceneFlow: EPE (px) 	| KITTI2015 val: EPE (px) 	|
-|--------------------	|:-------------------:	|:-----------------------:	|
-| 2D-MobileStereoNet 	|         1.14        	|           0.79          	|
-| 3D-MobileStereoNet 	|         0.80        	|           0.66          	|
+## Evaluation Results 
+MobileStereoNets are trained and tested using [SceneFlow](https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html) (SF), [KITTI](http://www.cvlibs.net/datasets/kitti/eval_stereo.php) and [DrivingStereo](https://drivingstereo-dataset.github.io/) (DS) datasets.
+In the following tables, the first columns show the training sets. For instance, in the case of "SF + KITTI2015", the model
+is firstly pretrained on the SceneFlow dataset, and then fine-tuned on KITTI images.
+The results are reported in End-point Error (EPE); the lower, the better.   
+Note that some experiments evaluate the zero-shot cross-dataset generalizability, e.g., when the model is trained on "SF + DS" and evaluated on "KITTI2015 val" or "KITTI2012 train".   
+The related trained models are provided in the tables as hyperlinks.  
+...
+
+- 2D-MobileStereoNet  
+
+|                     | SF test | KITTI2015 val | DS test | KITTI2012 train |
+|:-------------------:|:-------:|:-------------:|:-------:|:---------------:|
+| SF                  | **1.14**|      2.42     |   6.59  |       2.45      |
+| SF + KITTI2015      |    -    |      0.79     |   1.41  |       1.18      |
+| DS                  |    -    |      1.02     | **0.67**|       0.96      |
+| DS + KITTI2015      |    -    |      **0.65** |   0.79  |       0.91      |
+| SF + DS             |    -    |      1.04     |   0.73  |       1.04      |
+| SF + DS + KITTI2015 |    -    |      0.68     |   0.83  |       **0.90**  |
+
+- 3D-MobileStereoNet  
+
+|                     | SF test | KITTI2015 val | DS test | KITTI2012 train |
+|:-------------------:|:-------:|:-------------:|:-------:|:---------------:|
+| SF                  | **0.80**|     10.30     |   4.50  |       9.38      |
+| SF + KITTI2015      |    -    |      0.65     |   1.53  |       0.90      |
+| DS                  |    -    |      1.16     |   0.60  |       1.14      |
+| DS + KITTI2015      |    -    |      0.60     |   0.65  |       0.85      |
+| SF + DS             |    -    |      1.12     | **0.57**|       1.10      |
+| SF + DS + KITTI2015 |    -    |   **0.59**    |   0.62  |     **0.83**    |
+
+## Results on KITTI 2015 Leaderboard
+[Leaderboard](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)  
+[2D-MobileStereoNet on the leaderboard](http://www.cvlibs.net/datasets/kitti/eval_scene_flow_detail.php?benchmark=stereo&result=53b8257acf35d19410db728c95e5e666890c5e27)  
+[3D-MobileStereoNet on the leaderboard](http://www.cvlibs.net/datasets/kitti/eval_scene_flow_detail.php?benchmark=stereo&result=a1fd814aa8b2353df689233fb00bdaa227f380a8)
+
+## Computational Complexity
+
+...
 
 ## Installation
 
@@ -87,3 +121,7 @@ If you use this code, please cite this project.
   year={2021}
 }
 ```
+
+## Contact
+The repository is maintained by [Faranak Shamsafar](https://www.linkedin.com/in/faranak-shamsafar/).  
+[f.shmsfr@gmail.com](f.shmsfr@gmail.com)  
