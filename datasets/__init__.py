@@ -1,6 +1,7 @@
-from .dataset import SceneFlowDataset, KITTIDataset
+from .dataset import SceneFlowDataset, KITTIDataset, DrivingStereoDataset
 
 __datasets__ = {
     "sceneflow": SceneFlowDataset,
-    "kitti": KITTIDataset
+    "kitti": KITTIDataset,
+    "drivingstereo": DrivingStereoDataset,
 }
