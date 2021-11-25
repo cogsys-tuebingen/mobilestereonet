@@ -27,18 +27,18 @@ The related trained models are provided in the tables as hyperlinks.
 - 2D-MobileStereoNet  
 
 |                     | SF test | DS test       | KITTI2015 val | KITTI2012 train |
-|:-------------------:|:-------:|:-------------:|:-------:|:---------------:|
-| SF                  | **1.14**|    6.59       |    2.42 |       2.45      |
+|:-------------------|:-------:|:-------------:|:-------:|:---------------:|
+| [SF](https://drive.google.com/file/d/14g0SAmcHPQD55lvkGp0iovZxn__3xsvl/view?usp=sharing)                  | **1.14**|    6.59       |    2.42 |       2.45      |
 | DS                  |    -    |    **0.67**   |    1.02 |       0.96      |
 | SF + DS             |    -    |    0.73       |    1.04 |       1.04      |
-| SF + KITTI2015      |    -    |    1.41       |    0.79 |       1.18      |
+| [SF + KITTI2015](https://drive.google.com/file/d/1d7WbQj2o6LaVUv3wx2ZVa0fsVIF161TU/view?usp=sharing)      |    -    |    1.41       |    0.79 |       1.18      |
 | DS + KITTI2015      |    -    |    0.79       |    **0.65** |       0.91      |
 | SF + DS + KITTI2015 |    -    |    0.83       |    0.68  |       **0.90**  |
 
 - 3D-MobileStereoNet  
 
 |                     | SF test | DS test |  KITTI2015 val| KITTI2012 train |
-|:-------------------:|:-------:|:-------------:|:-------:|:---------------:|
+|:-------------------|:-------:|:-------------:|:-------:|:---------------:|
 | SF                  | **0.80**|    4.50    |      10.30 |       9.38      |
 | DS                  |    -    |     0.60      |     1.16|       1.14      |
 | SF + DS             |    -    |   **0.57**       | 1.12 |       1.10      |
