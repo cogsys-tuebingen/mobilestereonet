@@ -26,25 +26,25 @@ The related trained models are provided in the tables as hyperlinks.
 
 - 2D-MobileStereoNet  
 
-|                     | SF test | KITTI2015 val | DS test | KITTI2012 train |
+|                     | SF test | DS test       | KITTI2015 val | KITTI2012 train |
 |:-------------------:|:-------:|:-------------:|:-------:|:---------------:|
-| SF                  | **1.14**|      2.42     |   6.59  |       2.45      |
-| SF + KITTI2015      |    -    |      0.79     |   1.41  |       1.18      |
-| DS                  |    -    |      1.02     | **0.67**|       0.96      |
-| DS + KITTI2015      |    -    |      **0.65** |   0.79  |       0.91      |
-| SF + DS             |    -    |      1.04     |   0.73  |       1.04      |
-| SF + DS + KITTI2015 |    -    |      0.68     |   0.83  |       **0.90**  |
+| SF                  | **1.14**|    6.59       |    2.42 |       2.45      |
+| DS                  |    -    |    **0.67**   |    1.02 |       0.96      |
+| SF + DS             |    -    |    0.73       |    1.04 |       1.04      |
+| SF + KITTI2015      |    -    |    1.41       |    0.79 |       1.18      |
+| DS + KITTI2015      |    -    |    0.79       |    **0.65** |       0.91      |
+| SF + DS + KITTI2015 |    -    |    0.83       |    0.68  |       **0.90**  |
 
 - 3D-MobileStereoNet  
 
-|                     | SF test | KITTI2015 val | DS test | KITTI2012 train |
+|                     | SF test | DS test |  KITTI2015 val| KITTI2012 train |
 |:-------------------:|:-------:|:-------------:|:-------:|:---------------:|
-| SF                  | **0.80**|     10.30     |   4.50  |       9.38      |
-| SF + KITTI2015      |    -    |      0.65     |   1.53  |       0.90      |
-| DS                  |    -    |      1.16     |   0.60  |       1.14      |
-| DS + KITTI2015      |    -    |      0.60     |   0.65  |       0.85      |
-| SF + DS             |    -    |      1.12     | **0.57**|       1.10      |
-| SF + DS + KITTI2015 |    -    |   **0.59**    |   0.62  |     **0.83**    |
+| SF                  | **0.80**|    4.50    |      10.30 |       9.38      |
+| DS                  |    -    |     0.60      |     1.16|       1.14      |
+| SF + DS             |    -    |   **0.57**       | 1.12 |       1.10      |
+| SF + KITTI2015      |    -    |  1.53        |    0.65  |       0.90      |
+| DS + KITTI2015      |    -    |   0.65      |     0.60  |       0.85      |
+| SF + DS + KITTI2015 |    -    |   0.62  |     **0.59**  |     **0.83**    |
 
 ## Results on KITTI 2015 Leaderboard
 [Leaderboard](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)  
