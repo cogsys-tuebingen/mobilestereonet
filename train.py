@@ -1,7 +1,6 @@
 from __future__ import print_function, division
 import os
 import time
-import torch
 import argparse
 import torch.nn as nn
 import torch.utils.data
@@ -10,28 +9,24 @@ import torch.optim as optim
 import torch.backends.cudnn as cudnn
 from tensorboardX import SummaryWriter
 from torch.utils.data import DataLoader
-
 from datasets import __datasets__
 from models import __models__, model_loss
 from utils import *
 
-import warnings
-warnings.filterwarnings("ignore")
-
 cudnn.benchmark = True
 
 parser = argparse.ArgumentParser(description='MobileStereoNet')
-parser.add_argument('--model', default='MSNet3D', help='select a model structure', choices=__models__.keys())
+parser.add_argument('--model', default='MSNet2D', help='select a model structure', choices=__models__.keys())
 parser.add_argument('--maxdisp', type=int, default=192, help='maximum disparity')
 parser.add_argument('--dataset', required=True, help='dataset name', choices=__datasets__.keys())
 parser.add_argument('--datapath', required=True, help='data path')
 parser.add_argument('--trainlist', required=True, help='training list')
 parser.add_argument('--testlist', required=True, help='testing list')
 parser.add_argument('--lr', type=float, default=0.001, help='base learning rate')
+parser.add_argument('--lrepochs', type=str, required=True, help='the epochs to decay lr: the downscale rate')
 parser.add_argument('--batch_size', type=int, default=4, help='training batch size')
 parser.add_argument('--test_batch_size', type=int, default=4, help='testing batch size')
 parser.add_argument('--epochs', type=int, required=True, help='number of epochs to train')
-parser.add_argument('--lrepochs', type=str, required=True, help='the epochs to decay lr: the downscale rate')
 parser.add_argument('--logdir', required=True, help='the directory to save logs and checkpoints')
 parser.add_argument('--loadckpt', help='load the weights from a specific checkpoint')
 parser.add_argument('--resume', action='store_true', help='continue training the model')
@@ -45,8 +40,14 @@ torch.manual_seed(args.seed)
 torch.cuda.manual_seed(args.seed)
 os.makedirs(args.logdir, exist_ok=True)
 
+if args.model == 'MSNet2D':
+    modelName = '2D-MobileStereoNet'
+else:
+    modelName = '3D-MobileStereoNet'
+
+print("==========================\n", modelName, "\n==========================")
+
 # create summary logger
-print("creating new summary file")
 logger = SummaryWriter(args.logdir)
 
 # dataset, dataloader
@@ -70,17 +71,17 @@ if args.resume:
     all_saved_ckpts = sorted(all_saved_ckpts, key=lambda x: int(x.split('_')[-1].split('.')[0]))
     # use the latest checkpoint file
     loadckpt = os.path.join(args.logdir, all_saved_ckpts[-1])
-    print("loading the lastest model in logdir: {}".format(loadckpt))
+    print("Loading the latest model in logdir: {}".format(loadckpt))
     state_dict = torch.load(loadckpt)
     model.load_state_dict(state_dict['model'])
     optimizer.load_state_dict(state_dict['optimizer'])
     start_epoch = state_dict['epoch'] + 1
 elif args.loadckpt:
     # load the checkpoint file specified by args.loadckpt
-    print("loading model {}".format(args.loadckpt))
+    print("Loading model {}".format(args.loadckpt))
     state_dict = torch.load(args.loadckpt)
     model.load_state_dict(state_dict['model'])
-print("start at epoch {}".format(start_epoch))
+print("Start at epoch {}".format(start_epoch))
 
 
 def train():
@@ -158,7 +159,7 @@ def train_sample(sample, compute_metrics=False):
     image_outputs = {"disp_est": disp_ests, "disp_gt": disp_gt, "imgL": imgL, "imgR": imgR}
     if compute_metrics:
         with torch.no_grad():
-            image_outputs["errormap"] = [disp_error_image_func()(disp_est, disp_gt) for disp_est in disp_ests]
+            image_outputs["errormap"] = [disp_error_image_func(disp_est, disp_gt) for disp_est in disp_ests]
             scalar_outputs["EPE"] = [EPE_metric(disp_est, disp_gt, mask) for disp_est in disp_ests]
             scalar_outputs["D1"] = [D1_metric(disp_est, disp_gt, mask) for disp_est in disp_ests]
             scalar_outputs["Thres1"] = [Thres_metric(disp_est, disp_gt, mask, 1.0) for disp_est in disp_ests]
@@ -194,7 +195,7 @@ def test_sample(sample, compute_metrics=True):
     scalar_outputs["Thres3"] = [Thres_metric(disp_est, disp_gt, mask, 3.0) for disp_est in disp_ests]
 
     if compute_metrics:
-        image_outputs["errormap"] = [disp_error_image_func()(disp_est, disp_gt) for disp_est in disp_ests]
+        image_outputs["errormap"] = [disp_error_image_func(disp_est, disp_gt) for disp_est in disp_ests]
 
     return tensor2float(loss), tensor2float(scalar_outputs), image_outputs
 

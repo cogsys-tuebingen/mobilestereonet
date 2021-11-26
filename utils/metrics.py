@@ -38,25 +38,35 @@ def compute_metric_for_each_image(metric_func):
 
 @make_nograd_func
 @compute_metric_for_each_image
-def D1_metric(D_est, D_gt, mask):
-    D_est, D_gt = D_est[mask], D_gt[mask]
-    E = torch.abs(D_gt - D_est)
+def D1_metric(D_es, D_gt, mask):
+    D_es, D_gt = D_es[mask], D_gt[mask]
+    E = torch.abs(D_gt - D_es)
     err_mask = (E > 3) & (E / D_gt.abs() > 0.05)
     return torch.mean(err_mask.float())
 
 
 @make_nograd_func
 @compute_metric_for_each_image
-def Thres_metric(D_est, D_gt, mask, thres):
+def Thres_metric(D_es, D_gt, mask, thres):
+    """
+    BMP: Bad Matched Pixels
+    """
     assert isinstance(thres, (int, float))
-    D_est, D_gt = D_est[mask], D_gt[mask]
-    E = torch.abs(D_gt - D_est)
+    D_es, D_gt = D_es[mask], D_gt[mask]
+    E = torch.abs(D_gt - D_es)
     err_mask = E > thres
     return torch.mean(err_mask.float())
 
 
 @make_nograd_func
 @compute_metric_for_each_image
-def EPE_metric(D_est, D_gt, mask):
-    D_est, D_gt = D_est[mask], D_gt[mask]
-    return F.l1_loss(D_est, D_gt, size_average=True)
+def EPE_metric(D_es, D_gt, mask):
+    """
+    Pixel distance: mean absolute error (MAE)
+        mean(), if reduction=‘mean’
+        sum(), if reduction=‘sum’
+    """
+    D_es, D_gt = D_es[mask], D_gt[mask]
+    # return F.l1_loss(D_es, D_gt, size_average=True) -> mean() in older version of PyTorch
+    return F.l1_loss(D_es, D_gt, reduction='mean')
+

@@ -1,32 +1,25 @@
 from __future__ import print_function, division
 import os
-import cv2
-import torch
 import argparse
 import torch.nn as nn
 from skimage import io
 import torch.backends.cudnn as cudnn
 from torch.utils.data import DataLoader
-
 from datasets import __datasets__
 from models import __models__
 from utils import *
 from utils.KittiColormap import *
 
-import warnings
-
-warnings.filterwarnings("ignore")
-
 cudnn.benchmark = True
 
 parser = argparse.ArgumentParser(description='MobileStereoNet')
-parser.add_argument('--model', default='MSNet3D', help='select a model structure', choices=__models__.keys())
+parser.add_argument('--model', default='MSNet2D', help='select a model structure', choices=__models__.keys())
 parser.add_argument('--maxdisp', type=int, default=192, help='maximum disparity')
-parser.add_argument('--dataset', default='kitti', help='dataset name', choices=__datasets__.keys())
+parser.add_argument('--dataset', help='dataset name', choices=__datasets__.keys())
 parser.add_argument('--datapath', required=True, help='data path')
 parser.add_argument('--testlist', required=True, help='testing list')
 parser.add_argument('--loadckpt', required=True, help='load the weights from a specific checkpoint')
-parser.add_argument('--colored', default=True, help='save colored or save for benchmark submission')
+parser.add_argument('--colored', default=1, help='save colored or save for benchmark submission')
 
 # parse arguments
 args = parser.parse_args()
@@ -42,7 +35,7 @@ model = nn.DataParallel(model)
 model.cuda()
 
 # load parameters
-print("loading model {}".format(args.loadckpt))
+print("Loading model {}".format(args.loadckpt))
 state_dict = torch.load(args.loadckpt)
 model.load_state_dict(state_dict['model'])
 
@@ -50,7 +43,7 @@ model.load_state_dict(state_dict['model'])
 def test(args):
     print("Generating the disparity maps...")
 
-    os.makedirs('./predictions_kitti', exist_ok=True)
+    os.makedirs('./predictions', exist_ok=True)
 
     for batch_idx, sample in enumerate(TestImgLoader):
 
@@ -66,16 +59,16 @@ def test(args):
 
             disp_est = np.array(disp_est[top_pad:, :-right_pad], dtype=np.float32)
             name = fn.split('/')
-            fn = os.path.join("predictions_kitti", '_'.join(name[2:]))
+            fn = os.path.join("predictions", '_'.join(name[2:]))
 
-            if args.colored == True:
+            if float(args.colored) == 1:
                 disp_est = kitti_colormap(disp_est)
                 cv2.imwrite(fn, disp_est)
             else:
                 disp_est = np.round(disp_est * 256).astype(np.uint16)
                 io.imsave(fn, disp_est)
 
-    print("Done.")
+    print("Done!")
 
 
 @make_nograd_func

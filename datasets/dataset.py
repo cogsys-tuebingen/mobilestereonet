@@ -72,7 +72,8 @@ class SceneFlowDataset(Dataset):
                     "right": right_img,
                     "disparity": disparity,
                     "top_pad": 0,
-                    "right_pad": 0}
+                    "right_pad": 0,
+                    "left_filename": self.left_filenames[index]}
 
 
 class KITTIDataset(Dataset):
@@ -238,4 +239,5 @@ class DrivingStereoDataset(Dataset):
                     "right": right_img,
                     "disparity": disparity,
                     "top_pad": 0,
-                    "right_pad": 0}
+                    "right_pad": 0,
+                    "left_filename": self.left_filenames[index]}

@@ -16,13 +16,12 @@ This repository contains the code for "MobileStereoNet: Towards Lightweight Deep
 </div>
 
 ## Evaluation Results 
-MobileStereoNets are trained and tested using [SceneFlow](https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html) (SF), [KITTI](http://www.cvlibs.net/datasets/kitti/eval_stereo.php) and [DrivingStereo](https://drivingstereo-dataset.github.io/) (DS) datasets.
+MobileStereoNets are trained and tested using [SceneFlow](https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html) (SF), [KITTI](http://www.cvlibs.net/datasets/kitti/eval_stereo.php) and [DrivingStereo](https://drivingstereo-dataset.github.io/) (DS) datasets.  
 In the following tables, the first columns show the training sets. For instance, in the case of "SF + KITTI2015", the model
-is firstly pretrained on the SceneFlow dataset, and then fine-tuned on KITTI images.
+is firstly pretrained on the SceneFlow dataset, and then finetuned on KITTI images.  
 The results are reported in End-point Error (EPE); the lower, the better.   
-Note that some experiments evaluate the zero-shot cross-dataset generalizability, e.g., when the model is trained on "SF + DS" and evaluated on "KITTI2015 val" or "KITTI2012 train".   
+Note that some experiments evaluate the zero-shot cross-dataset generalizability, e.g. when the model is trained on "SF + DS" and evaluated on "KITTI2015 val" or "KITTI2012 train".     
 The related trained models are provided in the tables as hyperlinks.  
-...
 
 - 2D-MobileStereoNet  
 
@@ -39,7 +38,7 @@ The related trained models are provided in the tables as hyperlinks.
 
 |                     | SF test | DS test |  KITTI2015 val| KITTI2012 train |
 |:-------------------|:-------:|:-------------:|:-------:|:---------------:|
-| SF                  | **0.80**|    4.50    |      10.30 |       9.38      |
+| [SF](https://drive.google.com/file/d/1rkVOtDi8a4e4D2vZIYjxQwy9foJSanjQ/view?usp=sharing)                  | **0.80**|    4.50    |      10.30 |       9.38      |
 | DS                  |    -    |     0.60      |     1.16|       1.14      |
 | SF + DS             |    -    |   **0.57**       | 1.12 |       1.10      |
 | SF + KITTI2015      |    -    |  1.53        |    0.65  |       0.90      |
@@ -53,7 +52,17 @@ The related trained models are provided in the tables as hyperlinks.
 
 ## Computational Complexity
 
-...
+Requirements for computing the complexity by two methods:  
+```shell
+pip install --upgrade git+https://github.com/sovrasov/flops-counter.pytorch.git
+pip install --upgrade git+https://github.com/Lyken17/pytorch-OpCounter.git
+pip install onnx
+```
+Run the following command to see the complexity in terms of number of operations and parameters.   
+```shell
+python cost.py
+```
+You can also compute the complexity of each part of the network separately. For this, the input size of each module has been written in `cost.py`.
 
 ## Installation
 
@@ -74,10 +83,7 @@ conda activate mobilestereonet
 
 ### Training 
 
-Set a variable (e.g. ```DATAPATH```) for the dataset directory
-```DATAPATH="/Datasets/SceneFlow/"```
-or
-```DATAPATH="/Datasets/KITTI2015/"```. Then, you can run the ```train.py``` file as below:
+Set a variable for the dataset directory, e.g. ```DATAPATH="/Datasets/SceneFlow/"```. Then, run ```train.py``` as below:
 
 #### Pretraining on SceneFlow
 
@@ -91,7 +97,7 @@ python train.py --dataset sceneflow --datapath $DATAPATH --trainlist ./filenames
 python train.py --dataset kitti --datapath $DATAPATH --trainlist ./filenames/kitti15_train.txt --testlist ./filenames/kitti15_val.txt --epochs 400 --lrepochs "200:10" --batch_size 8 --test_batch_size 8 --loadckpt ./checkpoints/pretrained.ckpt --model MSNet2D
 ```
 
-The arguments in both cases can be set differently depending on the model and the system.
+The arguments in both cases can be set differently depending on the model, dataset and hardware resources.
 
 ### Prediction
 
@@ -103,7 +109,7 @@ python prediction.py --datapath $DATAPATH --testlist ./filenames/kitti15_test.tx
 
 ## Credits
 
-The implementation of this code is based on [PSMNet](https://github.com/JiaRenChang/PSMNet) and [GwcNet](https://github.com/xy-guo/GwcNet). Also, thanks to Matteo Poggi for the [KITTI python utils](https://github.com/mattpoggi/kitti-utilities-python).
+The implementation of this code is based on [PSMNet](https://github.com/JiaRenChang/PSMNet) and [GwcNet](https://github.com/xy-guo/GwcNet). Also, we would like to thank the authors of [THOP: PyTorch-OpCounter](https://github.com/Lyken17/pytorch-OpCounter), [Flops counter](https://github.com/sovrasov/flops-counter.pytorch) and [KITTI python utils](https://github.com/mattpoggi/kitti-utilities-python).
 
 ## License
 
