@@ -25,26 +25,28 @@ The related trained models are provided in the tables as hyperlinks.
 
 - 2D-MobileStereoNet  
 
-|                     | SF test | DS test       | KITTI2015 val | KITTI2012 train |
-|:-------------------|:-------:|:-------------:|:-------:|:---------------:|
-| [SF](https://drive.google.com/file/d/14g0SAmcHPQD55lvkGp0iovZxn__3xsvl/view?usp=sharing)                  | **1.14**|    6.59       |    2.42 |       2.45      |
-| DS                  |    -    |    **0.67**   |    1.02 |       0.96      |
-| SF + DS             |    -    |    0.73       |    1.04 |       1.04      |
-| [SF + KITTI2015](https://drive.google.com/file/d/1d7WbQj2o6LaVUv3wx2ZVa0fsVIF161TU/view?usp=sharing)      |    -    |    1.41       |    0.79 |       1.18      |
-| DS + KITTI2015      |    -    |    0.79       |    **0.65** |       0.91      |
-| SF + DS + KITTI2015 |    -    |    0.83       |    0.68  |       **0.90**  |
+|                                                                                                      | SF test | DS test       | KITTI2015 val | KITTI2012 train |
+|:-----------------------------------------------------------------------------------------------------|:-------:|:-------------:|:-------:|:---------------:|
+| [SF](https://drive.google.com/file/d/14g0SAmcHPQD55lvkGp0iovZxn__3xsvl/view?usp=sharing)             | **1.14**|    6.59       |    2.42 |       2.45      |
+| [DS](https://drive.google.com/file/d/1__-8srxXXum6U1fBTVmZN1mQjDUZO55n/view?usp=sharing)             |    -    |    **0.67**   |    1.02 |       0.96      |
+| [SF + DS](https://drive.google.com/file/d/1ISCXF0zr_HGZjG93-yQcGm0MKKPRHg0z/view?usp=sharing)        |    -    |    0.73       |    1.04 |       1.04      |
+| [SF + KITTI2015](https://drive.google.com/file/d/1d7WbQj2o6LaVUv3wx2ZVa0fsVIF161TU/view?usp=sharing) |    -    |    1.41       |    0.79 |       1.18      |
+| [DS + KITTI2015](https://drive.google.com/file/d/1ubbyuJK6YjnqL_kNtVDDd8-oS_YhP2__/view?usp=sharing) |    -    |    0.79       |    **0.65** |       0.91      |
+| [SF + DS + KITTI2015](https://drive.google.com/file/d/1Y2Q7qcwjls0ThVpQFvFy3nXR0TBCal9y/view?usp=sharing)                                                                              |    -    |    0.83       |    0.68  |       **0.90**  |
 
 - 3D-MobileStereoNet  
 
-|                     | SF test | DS test |  KITTI2015 val| KITTI2012 train |
-|:-------------------|:-------:|:-------------:|:-------:|:---------------:|
+|                                                                                                           | SF test | DS test |  KITTI2015 val| KITTI2012 train |
+|:----------------------------------------------------------------------------------------------------------|:-------:|:-------------:|:-------:|:---------------:|
 | [SF](https://drive.google.com/file/d/1rkVOtDi8a4e4D2vZIYjxQwy9foJSanjQ/view?usp=sharing)                  | **0.80**|    4.50    |      10.30 |       9.38      |
-| DS                  |    -    |     0.60      |     1.16|       1.14      |
-| SF + DS             |    -    |   **0.57**       | 1.12 |       1.10      |
-| SF + KITTI2015      |    -    |  1.53        |    0.65  |       0.90      |
-| DS + KITTI2015      |    -    |   0.65      |     0.60  |       0.85      |
-| SF + DS + KITTI2015 |    -    |   0.62  |     **0.59**  |     **0.83**    |
+| [DS](https://drive.google.com/file/d/1p5Bk9tg3J-L9xDa6Lmx0gDLdf-8OePs_/view?usp=sharing)                  |    -    |     0.60      |     1.16|       1.14      |
+| [SF + DS](https://drive.google.com/file/d/100vKF1zXp9bTDGEQ3dZGtw5BRRPj_nag/view?usp=sharing)             |    -    |   **0.57**       | 1.12 |       1.10      |
+| [SF + KITTI2015](https://drive.google.com/file/d/1nuZGusAJQL3cRIvv341h0Gwqzc5zKCxg/view?usp=sharing)      |    -    |  1.53        |    0.65  |       0.90      |
+| [DS + KITTI2015](https://drive.google.com/file/d/1tFEPVYK5_UMzeGa5n1Y21F4ymbibBPps/view?usp=sharing)                                                                                        |    -    |   0.65      |     0.60  |       0.85      |
+| [SF + DS + KITTI2015](https://drive.google.com/file/d/1yr94c77P9cFCKiBH9Ie8d0ntieBkbRMW/view?usp=sharing) |    -    |   0.62  |     **0.59**  |     **0.83**    |
 
+## Results on KITTI 2015 validation
+[Predictions of difference networks](https://drive.google.com/file/d/1RW42Cyd1UAe7X-LiaN14iQZ_WA2FXcSx/view?usp=sharing)
 ## Results on KITTI 2015 Leaderboard
 [Leaderboard](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)  
 [2D-MobileStereoNet on the leaderboard](http://www.cvlibs.net/datasets/kitti/eval_scene_flow_detail.php?benchmark=stereo&result=53b8257acf35d19410db728c95e5e666890c5e27)  
