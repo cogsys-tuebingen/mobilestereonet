@@ -82,6 +82,33 @@ conda env create --file mobilestereonet.yml
 conda activate mobilestereonet
 ```
 
+
+### SceneFlow Dataset Preparation
+
+Download the finalpass images and the disparity data for SceneFlow FlyingThings3D, Driving and Monkaa.
+For both, image and disparity data, move the directories in the TRAIN and TEST directories of the Driving and Monkaa Dataset (15mm_focallength/35mm_focallength for Driving,  funnyworld_x2 etc. for Monkaa) into the FlyingThings3D TRAIN and TEST directories, respectively.
+
+It should look like this:
+
+```
+frames_finalpass
+│
+└───TEST
+│   │
+│   └───A
+│   └───B
+│   └───C
+│   
+│
+└───TRAIN
+│   │
+│   └───15mm_focallength
+│   └───35mm_focallength
+│   └───A
+│   └───a_rain_of_stones_x2
+│   └─── ..
+```
+
 ### Training 
 
 Set a variable for the dataset directory, e.g. ```DATAPATH="/Datasets/SceneFlow/"```. Then, run ```train.py``` as below:
