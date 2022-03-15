@@ -145,14 +145,15 @@ This project is released under the [Apache 2.0 license](LICENSE).
 
 ## Citation
 
-If you use this code, please cite this project.
+If you use this code, please cite this paper:  
 
 ```
-@article{shamsafar2021mobilestereonet,
+@inproceedings{shamsafar2022mobilestereonet,
   title={MobileStereoNet: Towards Lightweight Deep Networks for Stereo Matching},
   author={Shamsafar, Faranak and Woerz, Samuel and Rahim, Rafia and Zell, Andreas},
-  journal={arXiv preprint arXiv:2108.09770},
-  year={2021}
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={2417--2426},
+  year={2022}
 }
 ```
 
